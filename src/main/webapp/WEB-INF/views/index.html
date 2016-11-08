@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Material Admin</title>
+
+        <!-- Vendor CSS -->
+        <link href="assets/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+        <link href="assets/vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+        <link href="assets/vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css" rel="stylesheet">
+        <link href="assets/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+        <link href="assets/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+            
+        <!-- CSS -->
+        <link href="assets/css/app.min.1.css" rel="stylesheet">
+        <link href="assets/css/app.min.2.css" rel="stylesheet">
+        
+    </head>
+    <body>
+        <header id="header" class="clearfix" data-current-skin="blue">
+            <ul class="header-inner">
+                <li id="menu-trigger" data-trigger="#sidebar">
+                    <div class="line-wrap">
+                        <div class="line top"></div>
+                        <div class="line center"></div>
+                        <div class="line bottom"></div>
+                    </div>
+                </li>
+
+                <li class="logo hidden-xs">
+                    <a href="index.html">BenQ B5 Redis Viewer</a>
+                </li>
+
+                <li class="pull-right">
+                    <ul class="top-menu">
+                        <li id="toggle-width">
+                            <div class="toggle-switch">
+                                <input id="tw-switch" type="checkbox" hidden="hidden">
+                                <label for="tw-switch" class="ts-helper"></label>
+                            </div>
+                        </li>
+
+                        <li id="top-search">
+                            <a href=""><i class="tm-icon zmdi zmdi-search"></i></a>
+                        </li>
+
+                       <li class="dropdown">
+                            <a data-toggle="dropdown" href=""><i class="tm-icon zmdi zmdi-more-vert"></i></a>
+                            <ul class="dropdown-menu dm-icon pull-right">
+                                <li class="skin-switch hidden-xs">
+                                    <span class="ss-skin bgm-lightblue" data-skin="lightblue"></span>
+                                    <span class="ss-skin bgm-bluegray" data-skin="bluegray"></span>
+                                    <span class="ss-skin bgm-cyan" data-skin="cyan"></span>
+                                    <span class="ss-skin bgm-teal" data-skin="teal"></span>
+                                    <span class="ss-skin bgm-orange" data-skin="orange"></span>
+                                    <span class="ss-skin bgm-blue" data-skin="blue"></span>
+                                </li>
+                                <li class="divider hidden-xs"></li>
+                                <li class="hidden-xs">
+                                    <a data-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i> Toggle Fullscreen</a>
+                                </li>
+                                <li>
+                                    <a data-action="clear-localstorage" href=""><i class="zmdi zmdi-delete"></i> Clear Local Storage</a>
+                                </li>
+                                <li>
+                                    <a href=""><i class="zmdi zmdi-face"></i> Privacy Settings</a>
+                                </li>
+                                <li>
+                                    <a href=""><i class="zmdi zmdi-settings"></i> Other Settings</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Top Search Content -->
+            <div id="top-search-wrap">
+                <div class="tsw-inner">
+                    <i id="top-search-close" class="zmdi zmdi-arrow-left"></i>
+                    <input type="text">
+                </div>
+            </div>
+        </header>
+        
+        <section id="main" data-layout="layout-1">
+            <aside id="sidebar" class="sidebar c-overflow">
+                <div class="profile-menu">
+                    <a href="">
+                        <div class="profile-pic">
+                            <img src="assets/img/profile-pics/1.jpg" alt="">
+                        </div>
+
+                        <div class="profile-info">
+                            Advanced
+                            <i class="zmdi zmdi-caret-down"></i>
+                        </div>
+                    </a>
+                    <ul class="main-menu">
+                        <li>
+                            <a href="profile-about.html"><i class="zmdi zmdi-account"></i> View Profile</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="zmdi zmdi-input-antenna"></i> Privacy Settings</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="zmdi zmdi-settings"></i> Settings</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="zmdi zmdi-time-restore"></i> Logout</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="main-menu">
+                    <li class="active">
+                        <a href="index.html"><i class="zmdi zmdi-home"></i> 首页</a>
+                    </li>
+
+                    <li><a href="calendar.html"><i class="zmdi zmdi-calendar"></i> 匹配队列 </a></li>
+
+
+                    <li><a href="generic-classes.html"><i class="zmdi zmdi-layers"></i> 正在比赛 </a></li>
+
+                </ul>
+            </aside>
+
+            
+            <section id="content">
+                <div class="container">
+                    <div class="block-header">
+                        <h2>Dashboard</h2>
+                        
+                        <ul class="actions">
+                            <li>
+                                <a href="">
+                                    <i class="zmdi zmdi-trending-up"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="zmdi zmdi-check-all"></i>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="" data-toggle="dropdown">
+                                    <i class="zmdi zmdi-more-vert"></i>
+                                </a>
+                                
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li>
+                                        <a href="">Refresh</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Manage Widgets</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Widgets Settings</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                    
+
+                    
+                    <div class="mini-charts">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-3">
+                                <div class="mini-charts-item bgm-cyan">
+                                    <div class="clearfix">
+                                        <div class="chart stats-bar"></div>
+                                        <div class="count">
+                                            <small>Website Traffics</small>
+                                            <h2>987,459</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-6 col-md-3">
+                                <div class="mini-charts-item bgm-lightgreen">
+                                    <div class="clearfix">
+                                        <div class="chart stats-bar-2"></div>
+                                        <div class="count">
+                                            <small>Website Impressions</small>
+                                            <h2>356,785K</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-6 col-md-3">
+                                <div class="mini-charts-item bgm-orange">
+                                    <div class="clearfix">
+                                        <div class="chart stats-line"></div>
+                                        <div class="count">
+                                            <small>Total Sales</small>
+                                            <h2>$ 458,778</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-6 col-md-3">
+                                <div class="mini-charts-item bgm-bluegray">
+                                    <div class="clearfix">
+                                        <div class="chart stats-line-2"></div>
+                                        <div class="count">
+                                            <small>Support Tickets</small>
+                                            <h2>23,856</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="dash-widgets">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6">
+                                <div id="site-visits" class="dash-widget-item bgm-teal">
+                                    <div class="dash-widget-header">
+                                        <div class="p-20">
+                                            <div class="dash-widget-visits"></div>
+                                        </div>
+                                        
+                                        <div class="dash-widget-title">For the past 30 days</div>
+                                        
+                                        <ul class="actions actions-alt">
+                                            <li class="dropdown">
+                                                <a href="" data-toggle="dropdown">
+                                                    <i class="zmdi zmdi-more-vert"></i>
+                                                </a>
+                                                
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li>
+                                                        <a href="">Refresh</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">Manage Widgets</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">Widgets Settings</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="p-20">
+                                        
+                                        <small>Page Views</small>
+                                        <h3 class="m-0 f-400">47,896,536</h3>
+                                        
+                                        <br/>
+                                        
+                                        <small>Site Visitors</small>
+                                        <h3 class="m-0 f-400">24,456,799</h3>
+                                        
+                                        <br/>
+                                        
+                                        <small>Total Clicks</small>
+                                        <h3 class="m-0 f-400">13,965</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 col-sm-6">
+                                <div id="pie-charts" class="dash-widget-item">
+                                    <div class="bgm-pink">
+                                        <div class="dash-widget-header">
+                                            <div class="dash-widget-title">Email Statistics</div>
+                                        </div>
+                                        
+                                        <div class="clearfix"></div>
+                                        
+                                        <div class="text-center p-20 m-t-25">
+                                            <div class="easy-pie main-pie" data-percent="75">
+                                                <div class="percent">45</div>
+                                                <div class="pie-title">Total Emails Sent</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="p-t-20 p-b-20 text-center">
+                                        <div class="easy-pie sub-pie-1" data-percent="56">
+                                            <div class="percent">56</div>
+                                            <div class="pie-title">Bounce Rate</div>
+                                        </div>
+                                        <div class="easy-pie sub-pie-2" data-percent="84">
+                                            <div class="percent">84</div>
+                                            <div class="pie-title">Total Opened</div>
+                                        </div>
+                                    </div>
+    
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 col-sm-6">
+                                <div class="dash-widget-item bgm-lime">
+                                    <div id="weather-widget"></div>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-3 col-sm-6">
+                                <div id="best-selling" class="dash-widget-item">
+                                    <div class="dash-widget-header">
+                                        <div class="dash-widget-title">Best Sellings</div>
+                                        <img src="assets/img/widgets/alpha.jpg" alt="">
+                                        <div class="main-item">
+                                            <small>Samsung Galaxy Alpha</small>
+                                            <h2>$799.99</h2>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="listview p-t-5">
+                                        <a class="lv-item" href="">
+                                            <div class="media">
+                                                <div class="pull-left">
+                                                    <img class="lv-img-sm" src="assets/img/widgets/note4.jpg" alt="">
+                                                </div>
+                                                <div class="media-body">
+                                                    <div class="lv-title">Samsung Galaxy Note 4</div>
+                                                    <small class="lv-small">$850.00 - $1199.99</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="lv-item" href="">
+                                            <div class="media">
+                                                <div class="pull-left">
+                                                    <img class="lv-img-sm" src="assets/img/widgets/mate7.jpg" alt="">
+                                                </div>
+                                                <div class="media-body">
+                                                    <div class="lv-title">Huawei Ascend Mate</div>
+                                                    <small class="lv-small">$649.59 - $749.99</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="lv-item" href="">
+                                            <div class="media">
+                                                <div class="pull-left">
+                                                    <img class="lv-img-sm" src="assets/img/widgets/535.jpg" alt="">
+                                                </div>
+                                                <div class="media-body">
+                                                    <div class="lv-title">Nokia Lumia 535</div>
+                                                    <small class="lv-small">$189.99 - $250.00</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        
+                                        <a class="lv-footer" href="">
+                                            View All
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+        </section>
+        
+        <footer id="footer">
+            Copyright &copy; 2015 Material Admin
+            
+            <ul class="f-menu">
+                <li><a href="">Home</a></li>
+                <li><a href="">Dashboard</a></li>
+                <li><a href="">Reports</a></li>
+                <li><a href="">Support</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+        </footer>
+
+        <!-- Page Loader -->
+        <div class="page-loader">
+            <div class="preloader pls-blue">
+                <svg class="pl-circular" viewBox="25 25 50 50">
+                    <circle class="plc-path" cx="50" cy="50" r="20" />
+                </svg>
+
+                <p>Please wait...</p>
+            </div>
+        </div>
+        
+        <!-- Older IE warning message -->
+        <!--[if lt IE 9]>
+            <div class="ie-warning">
+                <h1 class="c-white">Warning!!</h1>
+                <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+                <div class="iew-container">
+                    <ul class="iew-download">
+                        <li>
+                            <a href="http://www.google.com/chrome/">
+                                <img src="assets/img/browsers/chrome.png" alt="">
+                                <div>Chrome</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.mozilla.org/en-US/firefox/new/">
+                                <img src="assets/img/browsers/firefox.png" alt="">
+                                <div>Firefox</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.opera.com">
+                                <img src="assets/img/browsers/opera.png" alt="">
+                                <div>Opera</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.apple.com/safari/">
+                                <img src="assets/img/browsers/safari.png" alt="">
+                                <div>Safari</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                                <img src="assets/img/browsers/ie.png" alt="">
+                                <div>IE (New)</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <p>Sorry for the inconvenience!</p>
+            </div>   
+        <![endif]-->
+        
+        <!-- Javascript Libraries -->
+        <script src="assets/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="assets/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        
+        <script src="assets/vendors/bower_components/flot/jquery.flot.js"></script>
+        <script src="assets/vendors/bower_components/flot/jquery.flot.resize.js"></script>
+        <script src="assets/vendors/bower_components/flot.curvedlines/curvedLines.js"></script>
+        <script src="assets/vendors/sparklines/jquery.sparkline.min.js"></script>
+        <script src="assets/vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+        
+        <script src="assets/vendors/bower_components/moment/min/moment.min.js"></script>
+        <script src="assets/vendors/bower_components/fullcalendar/dist/fullcalendar.min.js "></script>
+        <script src="assets/vendors/bower_components/Waves/dist/waves.min.js"></script>
+        <script src="assets/vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+        <script src="assets/vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js"></script>
+        <script src="assets/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+        
+        <!-- Placeholder for IE9 -->
+        <!--[if IE 9 ]>
+            <script src="assets/vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+        <![endif]-->
+        
+        <script src="assets/js/flot-charts/curved-line-chart.js"></script>
+        <script src="assets/js/flot-charts/line-chart.js"></script>
+        <script src="assets/js/charts.js"></script>
+        
+        <script src="assets/js/charts.js"></script>
+        <script src="assets/js/functions.js"></script>
+        <script src="assets/js/demo.js"></script>
+
+        
+    </body>
+  </html>

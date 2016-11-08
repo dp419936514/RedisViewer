@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<configuration
+        scan="true"
+        scanPeriod="60 seconds"
+        debug="false"
+>
+    <!--当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。-->
+    <!--  scanPeriod="30 seconds"   设置每30秒自动扫描,若没有指定具体单位则以milliseconds为标准(单位:milliseconds, seconds, minutes or hours)  -->
+    <!-- debug="false"当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。-->
+
+    <!-- *********************************** appender starts  **************************************-->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>[%date][%-5level][%logger{10} %method:%line] %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <!--这里把文件名以 zip/gz结尾，可以在更换日志文件的时候，对文件进行压缩-->
+            <fileNamePattern>logs\%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!--单个日志文件最大500MB-->
+                <maxFileSize>500MB</maxFileSize>
+                <!--最多保存30天的日志-->
+                <maxHistory>30</maxHistory>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%date][%-5level][%logger{5} %method:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--日志异步到数据库 -->
+    <appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
+        <!--日志异步到数据库 -->
+        <connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">
+            <!--连接池 -->
+            <driverClass>com.mysql.jdbc.Driver</driverClass>
+            <url>jdbc:mysql://127.0.0.1:3306/redis_viewer</url>
+            <user>root</user>
+            <password>root</password>
+        </connectionSource>
+    </appender>
+    <!-- *********************************** appender end  **************************************-->
+
+
+    <!-- *********************************** loggers start ************************************* -->
+    <logger name="com.benq" level="DEBUG" addtivity="true">
+        <appender-ref ref="DB"/>
+    </logger>
+
+    <!-- *********************************** loggers end   ************************************* -->
+
+
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
