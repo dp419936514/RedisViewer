@@ -1,11 +1,8 @@
-/**
- * Created by Derek.P.Dai on 2016/11/15.
- */
 // 基于准备好的dom，初始化echarts实例
 
-myChart = echarts.init(document.getElementById('match_queue_history'), 'macarons');
+myChart = echarts.init(document.getElementById('match_queue_history'));
 var data = [];
-var oneDay = 24 * 3600 * 1000;
+var oneMin = 60  * 1000;
 var value = Math.random();
 var now = new Date();
 
@@ -15,65 +12,66 @@ for (var i = 0; i < 20; i++) {
 
 option = {
     title: {
-        show: false
+        text :'匹配队列人数统计',
+        subtext:"",
+         x: 'center',
+        align: 'right'
     },
-    grid:{
-        bottom:100
+    legend: {
+        data:['在线人数'],
+        x: 'left',
+        left: 20
+    },
+    grid: {
+        top: 50,
+        bottom: 100
     },
     tooltip: {
         trigger: 'axis',
-        formatter: function (params) {
-            var value = params[0].name;
-            var date = new Date(value);
-            var time = [date.getHours(),date.getMinutes(),date.getSeconds()];
-            var texts = [(date.getMonth() + 1), date.getDate()];
-            return "["+texts.join('-') +" "+time.join(":") + "]   "+params[0].value[1];
-        },
+        // formatter: '{a} {c}' ,
         axisPointer: {
             animation: false
         }
     },
     xAxis: {
-        name: '记录时间',
         type: 'time',
         splitLine: {
-            show: false
+            show: true
         },
         axisLabel: {
             formatter: // 使用函数模板，函数参数分别为刻度数值（类目），刻度的索引
                 function (value) {
                     // 格式化成月/日，只在第一个刻度显示年份
                     var date = new Date(value);
-                    var time = [date.getHours(),date.getMinutes(),date.getSeconds()];
+                    var time = [date.getHours(), date.getMinutes(), date.getSeconds()];
                     var texts = [(date.getMonth() + 1), date.getDate()];
-                    return texts.join('/') +" "+time.join(":") ;
+                    return texts.join('/') + " " + time.join(":");
                 }
         }
     },
     yAxis: {
-        name: '队列中人数',
         type: 'value',
         boundaryGap: [0, '100%'],
         splitLine: {
-            show: false
+            show: true
         }
     }
     ,
     series: [{
-        name: '模拟数据',
+        name: '在线人数',
         type: 'line',
-        showSymbol: false,
-        hoverAnimation: false,
+        showSymbol: true,
+        hoverAnimation: true,
         data: data
     }],
     dataZoom: [
         {   // 这个dataZoom组件，默认控制x轴。
             type: 'slider', // 这个 dataZoom 组件是 slider 型 dataZoom 组件
-            start: 0,      // 左边在 20% 的位置。
+            start: 50,      // 左边在 20% 的位置。
             end: 100         // 右边在 100% 的位置。
         },
         {
-            type:'inside'
+            type: 'inside'
         }
     ]
 }
@@ -81,7 +79,7 @@ option = {
 
 var app = {};
 app.timeTicket = setInterval(function () {
-    if (data.length >= 20) {
+    if (data.length >= 1000) {
         data.shift();
     }
     data.push(randomData());
@@ -97,21 +95,20 @@ myChart.setOption(option);
 
 myChart.on('click', function (params) {
     // 控制台打印数据的名称
-    console.log(params.name);
+    console.log(params);
 });
 
 
 function randomData() {
-    now = new Date(+now + oneDay);
-    value = value + Math.random() * 21 - 10;
+    now = new Date(+now + oneMin);
+    value = value + Math.random() * 21;
+    var nowStr = [[now.getMonth(),now.getDate()].join("-"),[now.getHours(),now.getMinutes(),now.getSeconds()].join(':')].join(" ");
+
     return {
         // dd  HH:MM:SS
-        name: now.getDay() + " ",
-        value: [
-            [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
+        value:[nowStr,
             Math.round(value)
-        ]
-    }
+]    }
 }
 
 
