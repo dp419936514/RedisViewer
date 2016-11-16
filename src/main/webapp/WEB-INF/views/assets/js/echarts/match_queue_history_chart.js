@@ -79,7 +79,7 @@ option = {
 
 var app = {};
 app.timeTicket = setInterval(function () {
-    if (data.length >= 1000) {
+    if (data.length >= 100) {
         data.shift();
     }
     data.push(randomData());
