@@ -11,12 +11,12 @@ import java.io.IOException;
 
     @NeedLogin
     @RequestMapping(value = "/") public ModelAndView home() throws IOException {
-        return new ModelAndView("home");
+        return new ModelAndView("index");
     }
 
     @NeedLogin
     @RequestMapping(value = "/index") public ModelAndView index() throws IOException {
-        return new ModelAndView("home");
+        return new ModelAndView("index");
     }
 
     @RequestMapping(value = "/login") public ModelAndView login() throws IOException {

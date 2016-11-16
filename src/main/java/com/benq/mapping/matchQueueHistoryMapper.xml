@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.benq.dao.matchQueueHistoryMapper">
+  <resultMap id="BaseResultMap" type="com.benq.model.matchQueueHistory">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="queryTime" jdbcType="TIMESTAMP" property="querytime" />
+    <result column="roomID" jdbcType="CHAR" property="roomid" />
+    <result column="userIDs" jdbcType="CHAR" property="userids" />
+    <result column="roomRLO" jdbcType="DOUBLE" property="roomrlo" />
+    <result column="matchTimes" jdbcType="INTEGER" property="matchtimes" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, queryTime, roomID, userIDs, roomRLO, matchTimes
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from match_queue_history
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from match_queue_history
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.benq.model.matchQueueHistory">
+    insert into match_queue_history (id, queryTime, roomID, 
+      userIDs, roomRLO, matchTimes
+      )
+    values (#{id,jdbcType=INTEGER}, #{querytime,jdbcType=TIMESTAMP}, #{roomid,jdbcType=CHAR}, 
+      #{userids,jdbcType=CHAR}, #{roomrlo,jdbcType=DOUBLE}, #{matchtimes,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.benq.model.matchQueueHistory">
+    insert into match_queue_history
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="querytime != null">
+        queryTime,
+      </if>
+      <if test="roomid != null">
+        roomID,
+      </if>
+      <if test="userids != null">
+        userIDs,
+      </if>
+      <if test="roomrlo != null">
+        roomRLO,
+      </if>
+      <if test="matchtimes != null">
+        matchTimes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="querytime != null">
+        #{querytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roomid != null">
+        #{roomid,jdbcType=CHAR},
+      </if>
+      <if test="userids != null">
+        #{userids,jdbcType=CHAR},
+      </if>
+      <if test="roomrlo != null">
+        #{roomrlo,jdbcType=DOUBLE},
+      </if>
+      <if test="matchtimes != null">
+        #{matchtimes,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.benq.model.matchQueueHistory">
+    update match_queue_history
+    <set>
+      <if test="querytime != null">
+        queryTime = #{querytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roomid != null">
+        roomID = #{roomid,jdbcType=CHAR},
+      </if>
+      <if test="userids != null">
+        userIDs = #{userids,jdbcType=CHAR},
+      </if>
+      <if test="roomrlo != null">
+        roomRLO = #{roomrlo,jdbcType=DOUBLE},
+      </if>
+      <if test="matchtimes != null">
+        matchTimes = #{matchtimes,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.benq.model.matchQueueHistory">
+    update match_queue_history
+    set queryTime = #{querytime,jdbcType=TIMESTAMP},
+      roomID = #{roomid,jdbcType=CHAR},
+      userIDs = #{userids,jdbcType=CHAR},
+      roomRLO = #{roomrlo,jdbcType=DOUBLE},
+      matchTimes = #{matchtimes,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

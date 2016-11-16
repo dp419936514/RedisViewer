@@ -75,96 +75,6 @@ $(document).ready(function () {
     }
 
     /*
-     * Top Search
-     */
-    (function () {
-        $('body').on('click', '#top-search > a', function (e) {
-            e.preventDefault();
-
-            $('#header').addClass('search-toggled');
-            $('#top-search-wrap input').focus();
-        });
-
-        $('body').on('click', '#top-search-close', function (e) {
-            e.preventDefault();
-
-            $('#header').removeClass('search-toggled');
-        });
-    })();
-
-    /*
-     * Sidebar
-     */
-    (function () {
-        //Toggle
-        $('body').on('click', '#menu-trigger, #chat-trigger', function (e) {
-            e.preventDefault();
-            var x = $(this).data('trigger');
-
-            $(x).toggleClass('toggled');
-            $(this).toggleClass('open');
-
-            //Close opened sub-menus
-            $('.sub-menu.toggled').not('.active').each(function () {
-                $(this).removeClass('toggled');
-                $(this).find('ul').hide();
-            });
-
-
-            $('.profile-menu .main-menu').hide();
-
-            if (x == '#sidebar') {
-
-                $elem = '#sidebar';
-                $elem2 = '#menu-trigger';
-
-                $('#chat-trigger').removeClass('open');
-
-                if (!$('#chat').hasClass('toggled')) {
-                    $('#header').toggleClass('sidebar-toggled');
-                }
-                else {
-                    $('#chat').removeClass('toggled');
-                }
-            }
-
-            if (x == '#chat') {
-                $elem = '#chat';
-                $elem2 = '#chat-trigger';
-
-                $('#menu-trigger').removeClass('open');
-
-                if (!$('#sidebar').hasClass('toggled')) {
-                    $('#header').toggleClass('sidebar-toggled');
-                }
-                else {
-                    $('#sidebar').removeClass('toggled');
-                }
-            }
-
-            //When clicking outside
-            if ($('#header').hasClass('sidebar-toggled')) {
-                $(document).on('click', function (e) {
-                    if (($(e.target).closest($elem).length === 0) && ($(e.target).closest($elem2).length === 0)) {
-                        setTimeout(function () {
-                            $($elem).removeClass('toggled');
-                            $('#header').removeClass('sidebar-toggled');
-                            $($elem2).removeClass('open');
-                        });
-                    }
-                });
-            }
-        })
-
-        //Submenu
-        $('body').on('click', '.sub-menu > a', function (e) {
-            e.preventDefault();
-            $(this).next().slideToggle(200);
-            $(this).parent().toggleClass('toggled');
-        });
-    })();
-
-    /*
      * Clear Notification
      */
     $('body').on('click', '[data-clear="notification"]', function (e) {
@@ -240,99 +150,7 @@ $(document).ready(function () {
         });
     }
 
-    /*
-     * Calendar Widget
-     */
-    if ($('#calendar-widget')[0]) {
-        (function () {
-            $('#calendar-widget').fullCalendar({
-                contentHeight: 'auto',
-                theme: true,
-                header: {
-                    right: '',
-                    center: 'prev, title, next',
-                    left: ''
-                },
-                defaultDate: '2014-06-12',
-                editable: true,
-                events: [
-                    {
-                        title: 'All Day',
-                        start: '2014-06-01',
-                        className: 'bgm-cyan'
-                    },
-                    {
-                        title: 'Long Event',
-                        start: '2014-06-07',
-                        end: '2014-06-10',
-                        className: 'bgm-orange'
-                    },
-                    {
-                        id: 999,
-                        title: 'Repeat',
-                        start: '2014-06-09',
-                        className: 'bgm-lightgreen'
-                    },
-                    {
-                        id: 999,
-                        title: 'Repeat',
-                        start: '2014-06-16',
-                        className: 'bgm-lightblue'
-                    },
-                    {
-                        title: 'Meet',
-                        start: '2014-06-12',
-                        end: '2014-06-12',
-                        className: 'bgm-green'
-                    },
-                    {
-                        title: 'Lunch',
-                        start: '2014-06-12',
-                        className: 'bgm-cyan'
-                    },
-                    {
-                        title: 'Birthday',
-                        start: '2014-06-13',
-                        className: 'bgm-amber'
-                    },
-                    {
-                        title: 'Google',
-                        url: 'http://google.com/',
-                        start: '2014-06-28',
-                        className: 'bgm-amber'
-                    }
-                ]
-            });
-        })();
-    }
 
-
-    /*
-     * Todo Add new item
-     */
-    if ($('#todo-lists')[0]) {
-        //Add Todo Item
-        $('body').on('click', '#add-tl-item .add-new-item', function () {
-            $(this).parent().addClass('toggled');
-        });
-
-        //Dismiss
-        $('body').on('click', '.add-tl-actions > a', function (e) {
-            e.preventDefault();
-            var x = $(this).closest('#add-tl-item');
-            var y = $(this).data('tl-action');
-
-            if (y == "dismiss") {
-                x.find('textarea').val('');
-                x.removeClass('toggled');
-            }
-
-            if (y == "save") {
-                x.find('textarea').val('');
-                x.removeClass('toggled');
-            }
-        });
-    }
 
     /*
      * Auto Hight Textarea
@@ -340,15 +158,6 @@ $(document).ready(function () {
     if ($('.auto-size')[0]) {
         autosize($('.auto-size'));
     }
-
-    /*
-     * Profile Menu
-     */
-    $('body').on('click', '.profile-menu > a', function (e) {
-        e.preventDefault();
-        $(this).parent().toggleClass('toggled');
-        $(this).next().slideToggle(200);
-    });
 
     /*
      * Text Feild
@@ -660,7 +469,6 @@ $(document).ready(function () {
         $('body').on('click', '.login-navigation > li', function () {
             var z = $(this).data('block');
             var t = $(this).closest('.lc-block');
-
             t.removeClass('toggled');
 
             setTimeout(function () {
@@ -677,10 +485,8 @@ $(document).ready(function () {
         var fs = $("[data-action='fullscreen']");
         fs.on('click', function (e) {
             e.preventDefault();
-
             //Launch
             function launchIntoFullscreen(element) {
-
                 if (element.requestFullscreen) {
                     element.requestFullscreen();
                 } else if (element.mozRequestFullScreen) {
@@ -691,10 +497,8 @@ $(document).ready(function () {
                     element.msRequestFullscreen();
                 }
             }
-
             //Exit
             function exitFullscreen() {
-
                 if (document.exitFullscreen) {
                     document.exitFullscreen();
                 } else if (document.mozCancelFullScreen) {
@@ -868,5 +672,8 @@ $(document).ready(function () {
         $('[data-current-skin]').attr('data-current-skin', skin)
 
     });
+
+
+
 
 });
