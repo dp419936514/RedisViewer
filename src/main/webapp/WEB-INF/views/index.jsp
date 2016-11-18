@@ -18,15 +18,14 @@
           rel="stylesheet">
 
     <!-- CSS -->
-    <link href="assets/css/app.min.1.css" rel="stylesheet">
-    <link href="assets/css/app.min.2.css" rel="stylesheet">
+    <link href="assets/css/app.css" rel="stylesheet">
 
     <!-- Chinese Font CSS -->
     <link href="assets/css/text-chinese.css" rel="stylesheet">
 
 </head>
 <body>
-<header id="header-2" class="clearfix" data-current-skin="blue">
+<header id="header-2" class="clearfix " data-current-skin="blue">
     <ul class="header-inner clearfix">
         <li id="menu-trigger" data-trigger=".ha-menu" class="visible-xs">
             <div class="line-wrap">
@@ -40,16 +39,33 @@
         </li>
         <li class="pull-right">
             <ul class="top-menu">
+                <li id="top-search">
+                    <a href=""><i class="tm-icon zmdi zmdi-search"></i></a>
+                </li>
+
                 <li class="dropdown">
-                    <a data-toggle="dropdown" href=""><i class="tm-icon zmdi zmdi-more-vert"></i></a>
+                    <a data-toggle="dropdown" href=""><i
+                            class="tm-icon zmdi zmdi-more-vert"></i></a>
                     <ul class="dropdown-menu dm-icon pull-right">
+                        <li class="skin-switch hidden-xs">
+                            <span class="ss-skin bgm-lightblue" data-skin="lightblue"></span>
+                            <span class="ss-skin bgm-bluegray" data-skin="bluegray"></span>
+                            <span class="ss-skin bgm-cyan" data-skin="cyan"></span>
+                            <span class="ss-skin bgm-teal" data-skin="teal"></span>
+                            <span class="ss-skin bgm-orange" data-skin="orange"></span>
+                            <span class="ss-skin bgm-blue" data-skin="blue"></span>
+                        </li>
+                        <li class="divider hidden-xs"></li>
                         <li class="hidden-xs">
-                            <a data-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i> Toggle
-                                Fullscreen</a>
+                            <a data-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i>
+                                Toggle Fullscreen</a>
                         </li>
                         <li>
-                            <a data-action="clear-localstorage" href=""><i class="zmdi zmdi-delete"></i> Clear Local
-                                Storage</a>
+                            <a data-action="clear-localstorage" href=""><i
+                                    class="zmdi zmdi-delete"></i> Clear Local Storage</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="zmdi zmdi-settings"></i> Other Settings</a>
                         </li>
                     </ul>
                 </li>
@@ -57,7 +73,7 @@
         </li>
     </ul>
     <!-- Top Search Content -->
-    <div class="search">
+    <div class="search" >
         <div class="fg-line">
             <input type="text" class="form-control" placeholder="Search...">
         </div>
@@ -66,26 +82,14 @@
     <nav class="ha-menu">
         <ul>
             <li class="active dropdown text-chinese"><a href="index">首页</a></li>
-            <li class="waves-effect text-chinese"> <a href="match_queue">匹配队列</a></li>
+            <li class="waves-effect text-chinese"><a href="match_queue">匹配队列</a></li>
             <li class="waves-effect text-chinese"><a href="gaming">游戏中</a></li>
             <li class="dropdown">
             </li>
         </ul>
     </nav>
 
-    <div class="skin-switch dropdown hidden-xs">
-        <button data-toggle="dropdown" class="btn ss-icon"><i class="zmdi zmdi-palette"></i></button>
-        <div class="dropdown-menu">
-            <span class="ss-skin ss-1 bgm-lightblue" data-skin="lightblue"></span>
-            <span class="ss-skin ss-2 bgm-bluegray" data-skin="bluegray"></span>
-            <span class="ss-skin ss-3 bgm-cyan" data-skin="cyan"></span>
-            <span class="ss-skin ss-4 bgm-teal" data-skin="teal"></span>
-            <span class="ss-skin ss-5 bgm-green" data-skin="green"></span>
-            <span class="ss-skin ss-6 bgm-orange" data-skin="orange"></span>
-            <span class="ss-skin ss-7 bgm-blue" data-skin="blue"></span>
-            <span class="ss-skin ss-8 bgm-purple" data-skin="purple"></span>
-        </div>
-    </div>
+
 </header>
 
 <section id="main" data-layout="layout-1">
@@ -100,10 +104,9 @@
                 </div>
 
                 <div class="card-body">
-                    <div style="min-height: 400px; min-width: 500px"  id="match_queue_history"></div>
+                    <div style="min-height: 400px; min-width: 500px" id="match_queue_history"></div>
                 </div>
             </div>
-
 
 
         </div>
@@ -178,7 +181,7 @@
 <![endif]-->
 
 
-<script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script>
+<script type="text/javascript" src="assets/js/youziku.api.min.js"></script>
 <script src="assets/js/font-chinese.js"></script>
 
 <!-- Javascript Libraries -->

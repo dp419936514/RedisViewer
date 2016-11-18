@@ -14,38 +14,39 @@
           rel="stylesheet">
 
     <!-- CSS -->
-    <link href="assets/css/app.min.1.css" rel="stylesheet">
-    <link href="assets/css/app.min.2.css" rel="stylesheet">
+    <link href="assets/css/app.css" rel="stylesheet">
 </head>
 
 <body class="login-content">
 <!-- Login -->
-<div class="lc-block toggled" id="l-login">
+<div class="lc-block toggled" id="l-login" >
+
+    <form id="login_form" method="post" action="login" >
     <div class="input-group m-b-20">
         <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
         <div class="fg-line">
-            <input type="text" class="form-control" placeholder="Username">
+            <input id="username" name="username" type="text" class="form-control" placeholder="Username">
         </div>
     </div>
 
     <div class="input-group m-b-20">
         <span class="input-group-addon"><i class="zmdi zmdi-male"></i></span>
         <div class="fg-line">
-            <input type="password" class="form-control" placeholder="Password">
+            <input id="password" name="password" type="password" class="form-control" placeholder="Password">
         </div>
     </div>
 
     <div class="checkbox">
         <label>
-            <input type="checkbox" value="">
+            <input id="keepSigned" type="checkbox" value="">
             <i class="input-helper"></i>
             Keep me signed in
         </label>
     </div>
 
-    <a href="" class="btn btn-login btn-danger btn-float"><i
+    <a class="btn btn-login btn-danger btn-float" type="submit" onclick="login()"> <i
             class="zmdi zmdi-arrow-forward"></i></a>
-
+</form>
 </div>
 
 <!-- Older IE warning message -->
@@ -58,31 +59,31 @@
         <ul class="iew-download">
             <li>
                 <a href="http://www.google.com/chrome/">
-                    <img src="img/browsers/chrome.png" alt="">
+                    <img src="assets/img/browsers/chrome.png" alt="">
                     <div>Chrome</div>
                 </a>
             </li>
             <li>
                 <a href="https://www.mozilla.org/en-US/firefox/new/">
-                    <img src="img/browsers/firefox.png" alt="">
+                    <img src="assets/img/browsers/firefox.png" alt="">
                     <div>Firefox</div>
                 </a>
             </li>
             <li>
                 <a href="http://www.opera.com">
-                    <img src="img/browsers/opera.png" alt="">
+                    <img src="assets/img/browsers/opera.png" alt="">
                     <div>Opera</div>
                 </a>
             </li>
             <li>
                 <a href="https://www.apple.com/safari/">
-                    <img src="img/browsers/safari.png" alt="">
+                    <img src="assets/img/browsers/safari.png" alt="">
                     <div>Safari</div>
                 </a>
             </li>
             <li>
                 <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                    <img src="img/browsers/ie.png" alt="">
+                    <img src="assets/img/browsers/ie.png" alt="">
                     <div>IE (New)</div>
                 </a>
             </li>
@@ -103,6 +104,6 @@
 <![endif]-->
 
 <script src="assets/js/functions.js"></script>
-
+<script src="assets/js/login.js"></script>
 </body>
 </html>

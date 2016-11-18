@@ -27,8 +27,7 @@
           rel="stylesheet">
 
     <!-- CSS -->
-    <link href="assets/css/app.min.1.css" rel="stylesheet">
-    <link href="assets/css/app.min.2.css" rel="stylesheet">
+    <link href="assets/css/app.css" rel="stylesheet">
 
     <!-- Chinese Font CSS -->
     <link href="assets/css/text-chinese.css" rel="stylesheet">
@@ -182,7 +181,7 @@
     <script src="assets/vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
     <![endif]-->
 
-    <script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script>
+    <script type="text/javascript" src="assets/js/youziku.api.min.js"></script>
     <script src="assets/js/font-chinese.js"></script>
 
     <script src="assets/js/functions.js"></script>

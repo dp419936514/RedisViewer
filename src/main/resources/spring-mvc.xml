@@ -22,13 +22,14 @@
 
     <!-- For static resources -->
     <mvc:resources mapping="assets/**" location="/WEB-INF/views/assets/"/>
+    <mvc:resources mapping="favicon.ico" location="/WEB-INF/"/>
 
     <mvc:interceptors>
         <!-- 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 -->
         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
         <!-- 如果不定义 mvc:mapping path 将拦截所有的URL请求 -->
         <mvc:interceptor>
-            <mvc:mapping path="*"/>
+            <mvc:mapping path="/*"/>
             <bean class="com.benq.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
